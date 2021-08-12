@@ -1,0 +1,104 @@
+<div class="lds-ring" *ngIf="loading"></div>
+
+<app-profile-create *ngIf="!loading && !creator"></app-profile-create>
+
+<mat-grid-list [cols]="breakpoint" [rowHeight]="breakpoint2" (window:resize)="onResize($event)" class="profile"
+    *ngIf="creator">
+    <!-- creator info -->
+    <mat-grid-tile class="profile-info">
+        <div class="box">
+            <img [src]="api + creator.avatar" alt="" class="box-img" *ngIf="creator.avatar">
+            <h1 *ngIf="creator.personal_information">
+                {{creator.first_name}} {{creator.last_name}}
+            </h1>
+            <h5 *ngIf="creator.creator_tag">
+                @{{creator.creator_tag}}
+            </h5>
+            <h5 *ngIf="creator.bio">
+                {{creator.bio}}
+            </h5>
+            <!-- <ul>
+                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+            </ul> -->
+        </div>
+    </mat-grid-tile>
+
+
+    <!-- creator details -->
+    <mat-grid-tile>
+        <div class="layout">
+            <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
+            <div class="page home-page">
+                <div class="page-contents">
+                    <h1>Notification</h1>
+                    <div *ngIf="notifications.length < 1">
+                        Nothing to see here
+                    </div>
+                    <app-tour-card *ngFor="let notification of notifications" [project]="notification">
+                    </app-tour-card>
+                </div>
+            </div>
+            <label class="nav" for="home">
+                <span>
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Notification
+                </span>
+            </label>
+
+            <input name="nav" type="radio" class="about-radio" id="about" />
+            <div class="page about-page">
+                <div class="page-contents">
+                    <h1>Favorites</h1>
+                    <div class="grid-items" *ngIf="favorites">
+
+                        <div *ngIf="favorites.length < 1">
+                            Nothing to see here
+                        </div>
+                        <app-tour-card *ngFor="let favorite of favorites" [projectid]="favorite.article_id">
+                        </app-tour-card>
+                    </div>
+                </div>
+            </div>
+            <label class="nav" for="about">
+                <span>
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12" y2="17"></line>
+                    </svg>
+                    Favorites
+                </span>
+            </label>
+
+            <input name="nav" type="radio" class="contact-radio" id="contact" />
+            <div class="page contact-page">
+                <div class="page-contents">
+                    <h1>Suggestions</h1>
+                    <p>
+                        Coming soon
+                    </p>
+                </div>
+            </div>
+            <label class="nav" for="contact">
+                <span>
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                    Suggestions
+                </span>
+
+            </label>
+        </div>
+
+    </mat-grid-tile>
+</mat-grid-list>

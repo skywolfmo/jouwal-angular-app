@@ -1,0 +1,80 @@
+<!-- <div>
+    
+  </form>
+</div> -->
+
+<div class="testbox">
+  <form [formGroup]="profile" (ngSubmit)="submit()">
+
+    <div class="banner">
+      <div>
+        <h1>Profile Creator</h1>
+      </div>
+    </div>
+
+    <fieldset>
+
+      <legend>Profile Details</legend>
+
+      <div class="columns">
+
+        <div class="item">
+          <label for="checkindate">Avatar <span>*</span></label>
+          <input type="file" formControlName="avatar" id="avatar" (change)="onHeaderImageChange($event)">
+        </div>
+
+        <div class="item">
+          <label for="checkindate">Creator Tag <span>*</span></label>
+          <input type="text" formControlName="creator_tag" id="creator_tag">
+        </div>
+
+        <div class="item">
+          <label for="checkindate">First Name <span>*</span></label>
+          <input type="text" formControlName="first_name" id="first_name">
+        </div>
+
+        <div class="item">
+          <label for="checkindate">Last Name <span>*</span></label>
+          <input type="text" formControlName="last_name" id="last_name">
+        </div>
+
+        <div class="item">
+          <label for="checkindate">Bio <span>*</span></label>
+          <input type="text" formControlName="bio" id="bio">
+        </div>
+
+        <div class="item">
+          <label for="checkindate">Address <span>*</span></label>
+          <input type="text" formControlName="address" id="address">
+        </div>
+
+        <div class="item">
+          <label for="checkindate">Birthday <span>*</span></label>
+          <!-- <input type="date" formControlName="birthday" id="birthday"> -->
+          <div>
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthday">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="btn-block">
+          <button type="submit">
+            Create
+          </button>
+          <div>
+            {{profileError}}
+          </div>
+        </div>
+
+      </div>
+    </fieldset>
+
+
+
+  </form>
+</div>

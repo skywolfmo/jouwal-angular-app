@@ -1,0 +1,164 @@
+<div class="container" *ngIf="project">
+    <div class="layout">
+
+        <div class="content">
+            <!-- fundraiser header -->
+            <div class="cardContent">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    {{project.title}}
+                </h1>
+            </div>
+            <div class="cardContent">
+
+                <div class="header" *ngIf="project.image">
+                    <img [src]=" project.image" alt="" class="header-img">
+                </div>
+            </div>
+            <!-- Fundraiser description -->
+            <div class="cardContent">
+                <div class="card-text">
+                    <h1>
+                        Description
+                    </h1>
+                    <p>
+                        {{project.description}}
+                    </p>
+                </div>
+            </div>
+            <div class="cardContent">
+                <div class="card-text">
+                    <h1>
+                        Destinations
+                    </h1>
+                    <p *ngFor="let destination of project.destination">
+                        City: {{destination.name}} 
+                        <br>
+                        Country: {{destination.country}}
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="cardContent">
+                <div class="card-text">
+
+                    <span>
+                        <share-button button="facebook"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="twitter"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="reddit"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="linkedin"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="whatsapp"></share-button>
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right">
+
+            <div class="card card-fund" (click)="goToLink()" routerLinkActive="router-link-active">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    Source
+                </h1>
+            </div>
+
+            <div *ngIf="isLoggedIn" class="card card-fund" (click)="addToFav()" routerLinkActive="router-link-active">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    <mat-icon>star</mat-icon>
+                </h1>
+            </div>
+            <div *ngIf="!isLoggedIn" class="card card-fund" [routerLink]="['/auth/login']"
+                routerLinkActive="router-link-active">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    Login
+                </h1>
+            </div>
+
+
+            <h1>
+                Duration:
+            </h1>
+            <div class="card" *ngIf="project.duration">
+                <div class="box">
+
+                    <h1>
+                        {{project.duration}} Days
+                    </h1>
+
+                </div>
+            </div>
+            <h1>
+                Source:
+            </h1>
+            <div class="card" *ngIf="project.source">
+                <a [href]="project.source">
+                    <div class="box">
+                        Toursradar
+
+                    </div>
+                </a>
+            </div>
+            <h1>Price:</h1>
+            <div class="card">
+                <div class="box">
+
+                    <h3>
+                        <div>{{project.price | currency:'USD' }}</div>
+                    </h3>
+
+                </div>
+            </div>
+
+
+
+            <h1>Categroy:</h1>
+            <div class="card">
+                <div>
+                    <p>
+                        {{project.category}}
+                    </p>
+                </div>
+                <!-- <div>
+                    <h4>
+                        Reward List:
+                    </h4>
+                    <p>
+                        tech, software, service.
+                    </p>
+                </div> -->
+            </div>
+
+            <h1>Age Limit:</h1>
+            <div class="card">
+                <div>
+                    <p>
+                        {{project.age_limit}}
+                    </p>
+                </div>
+
+            </div>
+            <h1>Languages:</h1>
+            <div class="card">
+                <div>
+                    <p>
+                        {{project.language}}
+                    </p>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>

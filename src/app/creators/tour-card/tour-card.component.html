@@ -1,0 +1,12 @@
+<div class="card" [routerLink]="['/tours/'+ project.id]" routerLinkActive="router-link-active" *ngIf="project">
+    <img [src]=" [project.image]" *ngIf="project.image"
+        style="width:100%">
+
+    <div class="container">
+                <p>{{ project.title }}</p>
+                <div class="border"></div>
+                <p>
+                {{project.price * 10 | currency:'MAD'}}
+                </p>
+    </div>
+</div>

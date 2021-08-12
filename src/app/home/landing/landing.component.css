@@ -1,0 +1,30 @@
+header {
+    padding: 1em;
+    clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
+    background: var(--bg-nav);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+
+    /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
+    
+    margin-bottom: 1em;
+    padding-bottom: 3.5em;
+    text-align: center;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.logo {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}

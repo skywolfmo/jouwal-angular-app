@@ -1,0 +1,127 @@
+<div class="container" *ngIf="project">
+    <div class="layout">
+
+        <div class="content">
+            <!-- fundraiser header -->
+            <div class="cardContent">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    {{project.title}}
+                </h1>
+            </div>
+            <div class="cardContent">
+
+                <div class="header" *ngIf="project.header_image">
+                    <img [src]="api + project.header_image[0].path" alt="" class="header-img">
+                </div>
+            </div>
+            <!-- Fundraiser description -->
+            <div class="cardContent">
+                <div class="card-text">
+                    <h1>
+                        Description
+                    </h1>
+                    <p>
+                        {{project.description}}
+                    </p>
+
+                </div>
+            </div>
+            <div class="cardContent">
+                <div class="card-text">
+                    <h1>
+                        Content
+                    </h1>
+                    <div [innerHTML]="project.content | marked">
+                    </div>
+                    <!-- {{ project.content }} -->
+                </div>
+            </div>
+            <div class="cardContent">
+                <div class="card-text">
+                    <!-- <share-buttons ></share-buttons> -->
+                    <!-- {{ project.content }} -->
+                    <span>
+                        <share-button button="facebook"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="twitter"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="reddit"></share-button>
+                    </span>
+                    <span>
+                        <share-button button="linkedin"></share-button>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right">
+            <div *ngIf="isLoggedIn" class="card card-fund" [routerLink]="['/fundraisers/' + project._id + '/fund']"
+                routerLinkActive="router-link-active">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    Fund
+                </h1>
+            </div>
+            <div *ngIf="!isLoggedIn" class="card card-fund" [routerLink]="['/auth/login']"
+                routerLinkActive="router-link-active">
+                <h1 style="text-align: center; padding-top: 2%;">
+                    Login
+                </h1>
+            </div>
+
+     
+            <h1>
+                Time:
+            </h1>
+            <div class="card" *ngIf="project.endDate">
+                <div class="box">
+
+                    <h1 *ngIf="date">
+                        {{date.days}} Days, {{date.hours}} Houres, {{date.minutes}} Minutes
+                    </h1>
+
+                </div>
+            </div>
+            <h1>Progress:</h1>
+            <div class="card">
+                <div class="box">
+
+                    <h3>
+                        <div>{{project.raisedFunds | currency:'MAD' }}</div>
+                        <div class="border"></div>
+                        <div>{{project.fundGoal  | currency:'MAD'}}</div>
+                    </h3>
+                    <app-progress-bar [progress]="progress"></app-progress-bar>
+
+                </div>
+            </div>
+
+            <h1>Creator:</h1>
+            <app-creator-card [id]="project.owner"></app-creator-card>
+
+            <h1>Categroy:</h1>
+            <div class="card">
+                <div>
+
+                    <p>
+                        {{project.category}}
+                    </p>
+                </div>
+                <!-- <div>
+                    <h4>
+                        Reward List:
+                    </h4>
+                    <p>
+                        tech, software, service.
+                    </p>
+                </div> -->
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>

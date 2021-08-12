@@ -1,0 +1,106 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" id="usrform" encType="multipart/form-data">
+    <div class="container">
+        <div class="layout">
+
+            <div class="content">
+                <!-- fundraiser header image upload -->
+                <div class="cardContent">
+                    <h1>Title</h1>
+                    <div class="header">
+                        <input formControlName="title" type="text" name="title" id="title">
+                    </div>
+                </div>
+                <div class="cardContent">
+                    <h1>Header</h1>
+
+                    <div class="header">
+
+                        <input formControlName="header_image" id="header_image" type="file" class="form-control"
+                            (change)="onHeaderImageChange($event)">
+                        <!-- <input type="file" name="header" id="headerImage"> -->
+                        <!-- <app-image-upload></app-image-upload> -->
+                    </div>
+                </div>
+                <!-- Fundraiser description -->
+                <div class="cardContent">
+                    <div class="card-text">
+                        <h1>
+                            Description
+                        </h1>
+                        <p>
+                            <textarea formControlName="description" name="description" id="descriptionInput"
+                                form="usrform">Enter text here...</textarea>
+
+                        </p>
+
+                    </div>
+                </div>
+                <div class="cardContent">
+                    <div class="card-text">
+                        <h1>
+                            Content
+                        </h1>
+                        <p>
+
+                            <!-- <input formControlName="content" type="text" name="content" id="content"> -->
+                            <textarea formControlName="content" name="content" id="contentInput"
+                                form="usrform">Enter text here...</textarea>
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right">
+                <div class="card">
+                    <!-- <input type="submit">Create The Project</button> -->
+                    <input type="submit" value="Create" class="btn-submit">
+                </div>
+                <h1>
+                    Thumbnail:
+                </h1>
+                <div class="card">
+                    <input formControlName="thumbnail" type="file" name="thumbnail" id="thumbnail"
+                        (change)="onThumbnailChange($event)">
+                </div>
+                <h1>
+                    Time:
+                </h1>
+                <div class="card">
+                    <div class="box">
+                        <!-- <input formControlName="endDate" type="date" name="endDate" id="endDate"> -->
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="endDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker startView="year"></mat-datepicker>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <h1>Goal:</h1>
+                <div class="card">
+                    <div class="box">
+                        <input formControlName="fundGoal" type="number" name="fundGoal" class="goal" id="fundGoal">
+                    </div>
+                </div>
+
+
+                <h1>Fundraiser:</h1>
+                <div class="card">
+                    <div>
+                        <h4>
+                            Categroy:
+                        </h4>
+                        <p>
+                            <input formControlName="category" type="text" name="category" id="category">
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>
